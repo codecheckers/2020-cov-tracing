@@ -12,13 +12,13 @@ paper:
 
 manifest:
   - file: outputs/plot1.png
-    comment: manuscript Figure 1
+    comment: manuscript Figure 1 (panels A and B)
   - file: outputs/plot2.png
     comment: manuscript Figure 2
-  - file: outputs/plot_symp.png
-    comment: manuscript Figure XX
   - file: outputs/rr_supp_plot.png
-    comment: manuscript Figure XX
+    comment: manuscript Figure S1
+  - file: outputs/plot_symp.png
+    comment: manuscript Figure S2
 
 codechecker:
   - name: Stephen J. Eglen
