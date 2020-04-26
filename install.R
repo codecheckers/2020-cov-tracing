@@ -1,0 +1,6 @@
+install.packages("dplyr")
+install.packages("tibble")
+install.packages("readr")
+install.packages("magrittr")
+install.packages("igraph")
+install.packages("doMC")
