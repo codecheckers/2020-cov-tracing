@@ -13,7 +13,7 @@ library(doMC)
 
 registerDoMC(4)  #change the 4 to your number of CPU cores
 
-setwd("~/Documents/GitHub/2020-cov-tracing/")
+##setwd("~/Documents/GitHub/2020-cov-tracing/")
 
 # Set local path ----------------------------------------------
 
@@ -22,9 +22,12 @@ out_dir <- paste0(wdir,"/outputs/") # Set data output path
 
 # Create output directories if don't exist
 subdir_list <- c("runs","runs2","sensitivity","rr_out")
-for(ii in 1:length(subdir_list)){
-  ifelse(!dir.exists(paste0(out_dir, subdir_list[ii])), dir.create(file.path(out_dir, subdir_list[ii])), FALSE)
+for(d in subdir_list) {
+  path = file.path(out_dir, d)
+  if (!dir.exists(path))
+    dir.create(path, recursive=TRUE) # recursive in case outputs was not created.
 }
+
 
 # Load contact data ----------------------------------------------
 
