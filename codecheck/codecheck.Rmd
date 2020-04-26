@@ -1,0 +1,150 @@
+---
+output:
+  pdf_document:
+    toc: false
+    includes:
+       in_header: codecheck-preamble.sty
+  html_document:
+    self_contained: false
+    toc: true
+    toc_float: false
+---
+
+```{r rsetup,eval=TRUE,include=FALSE}
+require(codecheck)
+require(knitr)
+require(rprojroot)
+require(yaml)
+require(xtable)
+require(tibble)
+require(readr)
+options(width=60)
+opts_chunk$set(cache=FALSE)
+
+root = find_root("codecheck.yml")
+```
+
+```{r, echo=FALSE,results='asis'}
+latex_codecheck_logo()
+```
+
+```{r rsetup-knitr,eval=TRUE,include=FALSE}
+metadata = codecheck_metadata(root)
+manifest = metadata$manifest
+
+dest_dir = file.path(root, "codecheck", "outputs")
+
+
+## Create the outputs directory if missing
+if ( !dir.exists(dest_dir) ) {
+  dir.create(dest_dir)
+}
+
+
+  
+## get_outputs = function(manifest) {
+##   files = sapply(manifest, function(x) x$file)
+##   comments = sapply(manifest, function(x) x$comment)
+##   sizes = file.size(dest_files)
+##   url=sprintf('<a href="%s">%s</a>', dest_files, files)
+##   table = cbind(files, comments, sizes, url)
+##   table
+## }
+
+manifest_df = copy_manifest_files(root, manifest,
+                                  dest_dir, keep_full_path=FALSE)
+                                    
+```
+
+
+
+---
+title: `r paste("CODECHECK certificate", metadata$certificate)`
+subtitle: `r .url_it(metadata$report)`
+---
+
+
+
+```{r,echo=FALSE,results='asis'}
+latex_summary_of_metadata(metadata)
+```
+
+
+```{r, echo=FALSE,results='asis'}
+xt = xtable(manifest_df[, c("output", "comment", "size")],
+            digits=0,
+            caption="Summary of output files generated")
+print(xt, include.rownames=FALSE, comment=FALSE)
+```
+
+
+# Summary
+
+This code was straightforward to codecheck; no issues were found.
+
+
+
+\clearpage
+
+# CODECHECKER notes
+
+The github repo <https://github.com/adamkucharski/2020-cov-tracing>
+was cloned.  The code was written in R and contained everything.  A
+new file `install.R` was created to install the necessary packages.
+
+```{r, code = readLines("../install.R"), eval=FALSE,echo=TRUE}
+```
+
+The outputs were found in the `outputs` folder, so this was moved to
+`outputs-orig` and the R script edited to create a new outputs folder.
+
+The startup folder was changed to comment out the line:
+```{r}
+##setwd("~/Documents/GitHub/2020-cov-tracing/")
+```
+
+
+
+## Running the software to regenerate outputs.
+
+The program was run from the root directory using:
+```{bash, eval=FALSE}
+time Rscript scripts/contact_model.R
+```
+This took 7m 10s to complete on a Thinkpad laptop.
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\captionsetup[table]{labelformat=addC}
+\captionsetup[figure]{labelformat=addC}
+
+
+\clearpage
+
+```{r, echo=FALSE, fig.cap=manifest_df[1:7,"comment"]}
+knitr::include_graphics(manifest_df[1, "dest"])
+cat('\n\n')
+knitr::include_graphics(manifest_df[2, "dest"])
+cat('\n\n')
+knitr::include_graphics(manifest_df[3, "dest"])
+cat('\n\n')
+knitr::include_graphics(manifest_df[4, "dest"])
+cat('\n\n')
+```
+
+\clearpage
+# About this document
+
+This document was created using Rmarkdown.  `make codecheck.pdf` will
+regenerate the file.
+
+```{r}
+sessionInfo()
+```
+
+
+
+
+<!-- 
+  rmarkdown::render("hancock1992-codecheck.Rmd", output_format="pdf_document") 
+  -->
