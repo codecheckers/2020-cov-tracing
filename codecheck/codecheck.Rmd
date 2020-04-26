@@ -96,22 +96,29 @@ new file `install.R` was created to install the necessary packages.
 ```
 
 The outputs were found in the `outputs` folder, so this was moved to
-`outputs-orig` and the R script edited to create a new outputs folder.
+`outputs-safe` and the R script edited to create a new outputs folder.
 
 The startup folder was changed to comment out the line:
 ```{r}
 ##setwd("~/Documents/GitHub/2020-cov-tracing/")
 ```
 
-
-
 ## Running the software to regenerate outputs.
 
 The program was run from the root directory using:
 ```{bash, eval=FALSE}
-time Rscript scripts/contact_model.R
+R
+R> source("scripts/contact_model.R")
 ```
-This took 7m 10s to complete on a Thinkpad laptop.
+This took almost 9 minutes to complete on a Thinkpad laptop.
+
+I would have preferred to run the script using the following:
+```{bash, eval=FALSE}
+Rscript scripts/contact_model.R
+```
+
+but this didn't generate the output images as `dev.copy()` does not
+work in batch mode.
 
 \setcounter{table}{0}
 \setcounter{figure}{0}
