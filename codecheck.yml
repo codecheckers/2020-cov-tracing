@@ -1,0 +1,32 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0
+
+paper:
+  title: Model of isolation, contact tracing, and physical distancing
+  authors:
+    - name: Adam Kucharski
+    - name: COVID modelling group
+  reference: >
+    Preprint
+    https://cmmid.github.io/topics/covid19/reports/bbc_contact_tracing.pdf
+
+manifest:
+  - file: outputs/plot1.png
+    comment: manuscript Figure 1
+  - file: outputs/plot2.png
+    comment: manuscript Figure 2
+  - file: outputs/plot_symp.png
+    comment: manuscript Figure XX
+  - file: outputs/rr_supp_plot.png
+    comment: manuscript Figure XX
+
+codechecker:
+  - name: Stephen J. Eglen
+    ORCID: 0000-0001-8607-8025
+
+summary: >
+  R code and packages worked well; simple edits needed to working directory.
+repository: https://github.com/adamkucharski/2020-cov-tracing
+check_time: "2020-04-26 20:00:00"
+certificate: 2020-009
+report: http://doi.org/10.5281/zenodo.FIXME
