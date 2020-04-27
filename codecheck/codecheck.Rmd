@@ -98,7 +98,9 @@ new file `install.R` was created to install the necessary packages.
 The outputs were found in the `outputs` folder, so this was moved to
 `outputs-safe` and the R script edited to create a new outputs folder.
 
-The startup folder was changed to comment out the line:
+The file `scripts/contact_model.R` was changed to comment out the
+line:
+
 ```{r}
 ##setwd("~/Documents/GitHub/2020-cov-tracing/")
 ```
@@ -128,7 +130,7 @@ work in batch mode.
 
 \clearpage
 
-```{r, echo=FALSE, fig.cap=manifest_df[1:7,"comment"]}
+```{r, echo=FALSE, fig.cap=manifest_df[1:4,"comment"]}
 knitr::include_graphics(manifest_df[1, "dest"])
 cat('\n\n')
 knitr::include_graphics(manifest_df[2, "dest"])
