@@ -27,5 +27,5 @@ set_zenodo_metadata(zenodo, record, metadata)
 ## delete it via the web page before uploading it again.
 ## set_zenodo_certificate(zenodo, record, "codecheck.pdf") 
 
-## Now go to zenodo and check the record (the URL for the deposit is
-## printed in get_zenodo_record() ) and then publish.
+## Now go to zenodo and check the record (the URL is printed
+## by set_zenodo_metadata() ) and then publish.
