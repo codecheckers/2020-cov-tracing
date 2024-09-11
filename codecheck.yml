@@ -6,9 +6,7 @@ paper:
   authors:
     - name: Adam Kucharski
     - name: COVID modelling group
-  reference: >
-    Preprint
-    https://cmmid.github.io/topics/covid19/reports/bbc_contact_tracing.pdf
+  reference: https://cmmid.github.io/topics/covid19/reports/bbc_contact_tracing.pdf
 
 manifest:
   - file: outputs/plot1.png
