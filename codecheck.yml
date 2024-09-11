@@ -2,13 +2,12 @@
 version: https://codecheck.org.uk/spec/config/1.0
 
 paper:
-  title: Model of isolation, contact tracing, and physical distancing
+  title: Model of isolation, contact tracing, and physical distancing (Preprint)
   authors:
     - name: Adam Kucharski
     - name: COVID modelling group
-  reference: >
-    Preprint
-    https://cmmid.github.io/topics/covid19/reports/bbc_contact_tracing.pdf
+  reference: https://cmmid.github.io/topics/covid19/reports/bbc_contact_tracing.pdf
+# later published reviewed: https://doi.org/10.1016/S1473-3099(20)30457-6
 
 manifest:
   - file: outputs/plot1.png
